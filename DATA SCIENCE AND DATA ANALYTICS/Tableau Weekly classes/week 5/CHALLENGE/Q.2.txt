@@ -1,0 +1,10 @@
+2) What is the difference between legends and filters? 
+
+legends:
+       The color legend can either be categorical or quantitative. 
+       A categorical legend represents discrete categories such as customer names and regions 
+       while a quantitative legend represents a range of numeric values such as sales and profit.
+filters:
+       Filtering is the process of removing certain values or range of values from a result set. 
+       Tableau filtering feature allows both simple scenarios using field values 
+       as well as advanced calculation or context-based filters
