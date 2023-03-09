@@ -1,0 +1,61 @@
+1) List out different types of products available in Tableau. 
+ 
+      Tableau desktop
+
+      Tableau Server
+
+      Tableau Online
+
+      Tableau Prep
+
+      Tableau Public
+-----------------------------------------------------------------------------------------------------------------------------------------------
+2) What is the difference between Tableau Public and Desktop?  ( Kindly list 5 points )
+
+ANS: Tableau Public
+
+   1) Tableau Public is free software that can allow anyone to connect to a spreadsheet or file and create interactive data visualizations. 
+   2) The dashboards created on tableau public is published in the tableau public server.
+   3) it is the free server in the internet like youtube.
+   4) so many people published their work. 
+   5) even you can see others work in tableau public gallery to get an idea.
+
+    Tableau Desktop
+
+   1) Tableau desktop is a paid developer version it is also known as tableau desktop professional edition. 
+   2) This is a desktop app using this we can analyse the data & identify more insights out of it. 
+   3) If you are working in a company that company will give you the access by providing the activation key. 
+   4) Tableau Desktop delivers everything you need to access, visualize, and analyse your data. 
+   5) With an intuitive drag and drop interface, you can uncover the hidden insights you need to make impactful business decisions faster.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+3) Difference between Tableau online and server.  ( Kindly list 5 points )
+
+ANS: Tableau Online
+
+   1) Tableau Online is a paid server application tool but it is already hosted by tableau server so you no need to install any windows server.
+   2) it is better you need to use the tableau dashboards anywhere it has all the features of the tableau server but not on the internet.
+   3) All communication between users and Tableau Online is encrypted using SSL for secure transmission of data. 
+   4) Small companies prefer tableau online because they no need to install it on the server. Tableau understands that data is among the most strategic and important assets an organization has. We put the highest priority on maintaining the
+      security and privacy of our customers’ data. 
+   5) Tableau enterprise-level security features manage operational security, user security, application security, network security, and data security.
+
+     Tableau server
+
+   1) Tableau server is a paid server application. 
+   2) This product is used by the organisation to share the dashboards within the organisations. 
+   3) This is totally secured & there is an admin team or a person to take care of the memory, user management, data source management, folder management & other server related issues.
+   4) Tableau Server is an online platform that allows you to host and manage Tableau data sources, workbooks, reports, and dashboards created on Tableau Desktop. 
+   5) It is also maintained by the company which will be paid. After creating the dashboard in the Tableau desktop you can publish
+      it in the server it will create a hyperlink to share it with the other team members via email or with the share button.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+4) Download the latest version of Tableau and connect to the excel file.
+
+ANS:   Please refer to attach the file.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+5) Extract the excel file and save it. 
+
+Ans:   Please refer to attach the file.
+
