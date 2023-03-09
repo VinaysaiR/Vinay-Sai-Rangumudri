@@ -1,0 +1,13 @@
+1) What is KPI ?
+
+  1. KPI stands for key performance indicator (KPIs), a quantifiable measure of performance over time for a specific objective. 
+  2. KPIs provide targets for teams to shoot for, milestones to gauge progress, and insights that help people across the organization make better decisions.
+  3. From finance and HR to marketing and sales, key performance indicators help every area of the business move forward at the strategic level
+  4. A Key Performance Indicator is a measurable value that shows how effectively a company is achieving key business objectives. 
+
+
+2) What are the relevant KPI for the sample superstore dataset? Why do you think so?
+
+    Tableau Superstore Dataset, steps to connect Tableau to the sample dataset, and various methods to interact with the elements of the dataset and visualize them in the workspace. You will learn about procedures to create a Geographical Map view and set up a Sales Dashboard using this sample dataset
+
+    Analyzing this data to extract crucial information is becoming an important part of the decision-making process. Tableau is a perfect tool to leverage Business Intelligence and perform an in-depth and insightful analysis of this data. New users can take advantage of the Sample datasets provided by Tableau to experiment and experience various operations and functionality offered by the platform.
