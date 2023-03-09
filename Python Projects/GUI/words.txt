@@ -1,0 +1,6 @@
+{"round": "a circle way"}
+{"Fan": "a wind blow mechine"}
+{"bulb": "light vision electronic material"}
+{"Fan": "a wind blow mechine"}
+{"Fan": "a wind blow machine"}
+{"Fan": "a wind blow machine"}
