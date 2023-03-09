@@ -1,0 +1,183 @@
+Aim:-
+
+This project aims to collect and analyze the data of Trip Pricing with Taxi Mobility Analytics site data and analyze it in detail by each Destination type, Gender, Type of Cab and Customer Rating, trip destination, etc. on that site.
+
+ 
+
+Introduction:-
+
+The main objective of this project is to analyze the data on, Trip pricing with taxi mobility. Through the Analysis of data, we can find out some important insights.
+
+ 
+
+Problem Statement:-
+
+ 
+
+ 
+
+We can find out how many males/females are on how many long destinations.
+Total pricing by gender and then by type of cab. In this analysis, we can see the number of cancellations in the last month, the Lifestyle index, etc.
+Customers since month by destination type etc.
+ 
+
+ 
+
+ 
+
+ 
+
+Methodology:-
+
+Step 1: Data cleaning
+             In data cleaning I cleaned the data with the transform data option present in Power BI because the dataset was not cleaned and included some missing values, so with the help of the duplicates function in Power BI, I cleaned the data and replace the null values with 0 and then started working on it.
+
+ 
+
+ 
+
+Step 4: Data interpretation
+             I found some important information about the data set in this data interpretation step.
+
+The data set was almost clear and completed.
+I replaced the null values with 0.
+There is a total of 131664 rows and 14 columns.
+ 
+
+Step 5: Visualization
+              In visualization, I took the help of Power BI Desktop software to make graphs and charts here some relevant graphs and charts are attached.  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Analysis (Datasheets about it):-
+
+In observation found some interesting points that are mentioned below.
+
+The highest customer rating is 100K and the 35K Cancellation last month by the Confidence Lifestyle index.
+Maximum Trip distance is 0.48M by type of cab C.
+According to gender, the maximum is male.
+ 
+
+You can see the blowing table blue color indicates the maximum values and light blue values indicate the minimum value.
+We can see the maximum value is 81367 of the pricing type of females.
+
+ 
+
+ 
+
+ 
+
+ 
+
+Insights:-
+
+In conclusion, we can take a look at the final Dashboard for further analysis.
+We can see the values according to gender.
+ 
+
+ 
+
+Recommendations:-
+
+We can collect a large dataset for analysis.
+We can analyze the data of the trip destination.
+Like this dataset we can perform operations with various types of cabs, gender, or destination type.
+We can work on large datasets and analyze them with the proper format of the chart.
+Conclusion:-
+
+In conclusion, we can take a look at the final Dashboard for further analysis.
+
+
+As we can see in the Dashboard the top country is vaccination-wise. The highest value of the pricing type, etc. and we can see the maximum value is 81367 of the pricing type of females.
+
+
+
+
+Aim
+
+The aim of this project is to collect and analyze the data in detail of the Pickup point of the Airport and City Request id in Uber Request Data.
+
+ 
+
+Introduction
+
+Uber provides the 2016 data. By using this data find out the demand and supply Analysis gap of the cab.
+
+The main objective of this project is to analyze the data on, Uber Request data. Through the analysis of data, we can find some important insights.
+
+ 
+
+Problem Statement.
+
+In this project, we find out how many request id is placed from the pickup point of the Airport and city, How many Drivers are present, How many trips are completed, and how many trips are cancelled also find out how many trips the car is not available for the trips.
+
+Methodology
+
+In Uber, the Request Data set the first column is Request id in this column the request-id is present the placed by the customer.
+In the second column, the pickup point is present in this data only two Airport and City pickup point is present.
+The next column is Driver Id in this column so many drivers are present each driver assigns a separate driver ID.
+Another column is Status in this Status column three statuses are present completed, cancelled and No car available.
+The last two columns are the Request timestamp and Drop Timestamp in this column the request time and drop time are present.
+The first step is cleaning the data. In data cleaning I cleaned the data with the transform data option present in Power BI because the dataset was not cleaned and included some missing values, so with the help of the duplicates function in Power BI, I cleaned the data and replace the null values with 0 and then started working on it.
+After Data cleaning performs the Data interpretation step. In Data interpretation found some important information.
+ 
+
+The data set was almost clean and completed.
+Replace the Null values with 0
+There is a total of 6746 rows and 4 columns are present.
+ 
+
+Visualization
+
+In visualization, I took the help of Power BI Desktop software to make graphs and charts here some relevant graphs and charts are attached. 
+
+
+Analysis
+
+From the above Visualization find some interesting points that are mentioned below
+
+In the first chart, almost 1327 trips are completed for Airport and 1504 trips are completed for City.
+For a total of 1713 trips, there is no Car Available for Airport trips and 937 trips with no car available for city trips.
+A total of 198 trips are cancelled for Airport and 1066 trips are cancelled for city trips.
+In the Second chart 15 July 2016, almost 20.47 % of request IDs are placed.
+The Total of 301 Drivers are available in 2016.
+In the fourth Chart, the Total Request id is placed for airports is 50.99 % and the total request Id are placed for city is 49.01 %.
+And in the last chart, 297 Drivers have completed the Airport trip and 299 Drivers are completed the City trip.
+The Total of 145 Drivers cancelled the Airport Trips and 291 Drivers cancelled the city Trips.
+Insights
+
+In conclusion, we can take a look at the final Dashboard for further Analysis.
+We analyzed the data according to the request ID.
+ 
+
+Recommendations
+
+We can analyze the data of the overall Trips in the City.
+Like this dataset, we can Analyze the Data according to the Different Cities-Area it takes more clarity to how to fill the supply and demand gap
+We can analyze the data with the proper format
+We can collect good datasets for more effective analysis by using charts.
+Conclusion
+
+In Conclusion, we can take look at the Dashboard for further Analysis.
+
+According to analysis, almost 1713 trips are cancelled for Airport trips. In airports, trips need to increase the drivers that help to increase the Business.
+The second points are that almost 1066 trips are cancelled by the customer in the city area and need to improve some features.
+A total of 1327 Drivers successfully completed the Airport trips and 1504 Drivers successfully completed the City trips.
