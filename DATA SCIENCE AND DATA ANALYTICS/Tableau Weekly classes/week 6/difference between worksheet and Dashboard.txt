@@ -1,0 +1,46 @@
+1) What is the difference between worksheet and Dashboard?
+
+worksheet:
+    1) A worksheet is where you build views of your data by dragging and dropping fields onto shelves. 
+    2) A dashboard is a combination of several views that you can arrange for presentation or to monitor. 
+    3) A story is a sequence of views or dashboards that work together to convey information.
+
+Dashboard:
+    1) A dashboard is a collection of several views, letting you compare a variety of data simultaneously. 
+    2) For example, 
+          1. if you have a set of views that you review every day, 
+          2. you can create a dashboard that displays all the views at once, 
+          3. rather than navigate to separate worksheets.
+
+difference between worksheet and Dashboard:
+    1) Like worksheets, you access dashboards from tabs at the bottom of a workbook. 
+    2) Data in sheets and dashboards is connected; when you modify a sheet, any dashboards containing it change, and vice versa. 
+    3) Both sheets and dashboards update with the latest available data from the data source
+
+2) Create an account on Tableau public and publish your dashboard. Kindly publish your Week 5 challenge dashboard here.
+
+ANS: STEPS ------>
+      1) With your workbook open in Tableau Desktop, select Server> Tableau Public > Save to Tableau Public
+      2) If you don’t have an account, select the link to create a new one.
+      3) Type a name for the workbook and click Save.
+      4) When you save a workbook to Tableau Public, the publishing process creates an extract of the data connection.
+      5) After the workbook is published, you are redirected to your account on the tableau public website
+
+
+3) Share the link for Feedback. Not the whole file.
+
+Week 5 challenge dashboard
+
+        https://public.tableau.com/shared/NHSTWPF45?:display_count=n&:origin=viz_share_link
+
+        https://public.tableau.com/app/profile/rangumudri.vinay.sai/viz/WEEK_5_CHALLENGE/ANS5
+
+
+
+Tableau public and publish your dashboard
+
+               https://public.tableau.com/app/profile/rangumudri.vinay.sai
+
+
+
+
