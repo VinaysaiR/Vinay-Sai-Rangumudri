@@ -1,0 +1,131 @@
+
+
+#Python (3-10)(3,4,7,8,9,10)
+
+#Data Types and Data Structures
+
+Python was named after ____? 
+
+A.Guido Van Russom
+B.Monty Python Flying Circus
+
+Python was named after BBC Show Monty Python Flying Circus by Guido Van Russom
+
+
+
+2.When Python was Created?
+It was created in 1991
+
+A.1994
+B.1992
+C.1991
+
+3.It is a ______ language?
+
+A.Interpreted
+B.Compiler
+
+It is an interpreted language
+
+
+4.It is ____ oriented 
+
+A.Procedural
+B.Object
+
+
+Which of the following is not feature of Python?
+
+A.Portable
+B.Easy
+C.Interpreted
+D.Faster
+
+It is portable,easy interpreted language
+
+Is Python Case Sensitive ?
+A.True
+B.False
+
+
+Python is Case Sensitive
+
+
+Python Identifiers
+
+1.Identifiers are the names given to various entities that helps to distinguish each of them 
+
+Rules of Variable-->
+1.It should start with an alphabet
+2.It can only have "_" in special character
+3.It can contains numbers
+4.A keyword cant be a variable
+
+
+Difference between Keyword and Variable?
+
+1.Keywords are static whereas variable are dynamic
+2.Keywords are specially reserved words having a specific meaning whereas variables are temporary storage spaces given by the user
+3.Keywords are built in and Variables are user defined
+
+Data Types-->Classification of data items
+
+Which of these is not a data type in python?
+A.Float
+B.Double
+C.Boolean
+D.Integer
+
+Data types of Python--> It is a single data point
+
+1.Number
+A.Integer--> Without decimal
+B.Float--> With decimal
+C.Complex--> with real and imaginary part
+
+
+2.String-->The alphanumeric data type--> Engrossed with '' or ""
+
+
+3.Boolean--> Collection of True and False
+
+True
+False
+
+What is the keyword used for checking the data type of a variable?
+type()
+
+x=input('Enter a value')
+type(x)
+What is type(x)?
+
+x=int(input('Enter a value'))
+type(x)
+What is type(x)?
+
+str
+int
+float
+bool
+
+
+
+What is typecasting?
+The process of changing one data type to another data type is called type casting
+
+String-->
+
+Is string mutable?
+A.True
+B.False
+
+String is immutable
+
+
+
+
+
+
+
+
+
