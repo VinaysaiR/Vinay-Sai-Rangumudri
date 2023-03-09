@@ -1,0 +1,767 @@
+===========================================================================================================================================================================
+
+
+                                                                FOODIE_FI CASE STUDY
+
+===========================================================================================================================================================================
+
+Introduction:
+
+Subscription based businesses are super popular and Danny realised that there was a large gap in the market - he wanted to create a new streaming service that only had food related content - something like Netflix but with only cooking shows! Danny finds a few smart friends to launch his new startup Foodie-Fi in 2020 and started selling monthly and annual subscriptions, giving their customers unlimited on-demand access to exclusive food videos from around the world! Danny created Foodie-Fi with a data driven mindset and wanted to ensure all future investment decisions and new features were decided using data. This case study focuses on using subscription style digital data to answer important business questions.
+
+Available: 
+
+Data Danny has shared the data design for Foodie-Fi and also short descriptions on each of the database tables - our case study focuses on only 2 tables but there will be a challenge to create a new table for the Foodie-Fi team. All datasets exist within the foodie_fi database schema - be sure to include this reference within your SQL scripts as you start exploring the data and answering the case study questions.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                              Entity Relationship Diagram
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE DATABASE foodie_fi;
+USE foodie_fi;
+
+ 
+===========================================================================================================================================================================
+                                                                    Plans Table
+
+Table 1: plans 
+Customers can choose which plans to join Foodie-Fi when they first sign up. Basic plan customers have limited access and can only stream their videos and is only available monthly at $9.90 Pro plan customers have no watch time limits and are able to download videos for offline viewing. Pro plans start at $19.90 a month or $199 for an annual subscription. Customers can sign up to an initial 7 day free trial will automatically continue with the pro monthly subscription plan unless they cancel, downgrade to basic or upgrade to an annual pro plan at any point during the trial. When customers cancel their Foodie-Fi service - they will have a churn plan record with a null price but their plan will continue until the end of the billing period.
+
+ANS:
+
+DROP TABLE IF EXISTS plans;
+CREATE TABLE plans (
+plan_id INT,
+plan_name TEXT,
+price DECIMAL(5,2));
+
+INSERT INTO plans VALUES
+(0, "trial", 0), 
+(1, "basic monthly", "9.90"), 
+(2, "pro monthly", "19.90"), 
+(3, "pro annual", "199"),
+(4, "churn", null);
+
+
+-------+-------------+------+
+plan_id|plan_name    |price |
+-------+-------------+------+
+      0|trial        |  0.00|
+      1|basic monthly|  9.90|
+      2|pro monthly  | 19.90|
+      3|pro annual   |199.00|
+      4|churn        | null |
+-------+-------------+------+
+
+
+===========================================================================================================================================================================
+                                                                   Subscriptions Table
+
+
+Table 2: subscriptions 
+Customer subscriptions show the exact date where their specific plan_id starts. If customers downgrade from a pro plan or cancel their subscription - the higher plan will remain in place until the period is over - the start_date in the subscriptions table will reflect the date that the actual plan changes. When customers upgrade their account from a basic plan to a pro or annual pro plan - the higher plan will take effect straightaway. When customers churn - they will keep their access until the end of their current billing period but the start_date will be technically the day they decided to cancel their service.
+
+ANS:
+
+DROP TABLE IF EXISTS subscriptions;
+CREATE TABLE subscriptions (
+customer_id INT,
+plan_id INT,
+start_date DATE);
+
+INSERT INTO subscriptions VALUES
+ ('1', '0', '2020-08-01'),
+  ('1', '1', '2020-08-08'),
+  ('2', '0', '2020-09-20'),
+  ('2', '3', '2020-09-27'),
+  ('11', '0', '2020-11-19'),
+  ('11', '4', '2020-11-26'),
+  ('13', '0', '2020-12-15'),
+  ('13', '1', '2020-12-22'),
+  ('13', '2', '2021-03-29'),
+  ('15', '0', '2020-03-17'),
+  ('15', '2', '2020-03-24'),
+  ('15', '4', '2020-04-29'),
+  ('16', '0', '2020-05-31'),
+  ('16', '1', '2020-06-07'),
+  ('16', '3', '2020-10-21'),
+  ('18', '0', '2020-07-06'),
+  ('18', '2', '2020-07-13'),
+  ('19', '0', '2020-06-22'),
+  ('19', '2', '2020-06-29'),
+  ('19', '3', '2020-08-29');
+
+-----------+-------+----------+
+customer_id|plan_id|start_date|
+-----------+-------+----------+
+          1|      0|2020-08-01|
+          1|      1|2020-08-08|
+          2|      0|2020-09-20|
+          2|      3|2020-09-27|
+         11|      0|2020-11-19|
+         11|      4|2020-11-26|
+         13|      0|2020-12-15|
+         13|      1|2020-12-22|
+         13|      2|2021-03-29|
+         15|      0|2020-03-17|
+         15|      2|2020-03-24|
+         15|      4|2020-04-29|
+         16|      0|2020-05-31|
+         16|      1|2020-06-07|
+         16|      3|2020-10-21|
+         18|      0|2020-07-06|
+         18|      2|2020-07-13|
+         19|      0|2020-06-22|
+         19|      2|2020-06-29|
+         19|      3|2020-08-29|
+-----------+-------+----------+
+
+===========================================================================================================================================================================
+
+                                                                     Interactive MySQL Instance
+
+
+Case Study Questions This case study is split into an initial data understanding question before diving straight into data analysis questions before finishing with 1 single extension challenge.
+
+*****************************************************************************************************************************************************************
+
+                                                                        A.	Customer Journey
+===========================================================================================================================================================================
+
+Based off the 8 sample customers provided in the sample from the subscriptions table, write a brief description about each customer’s onboarding journey. Try to keep it as short as possible - you may also want to run some sort of join to make your explanations a bit easier!
+
+ANS:
+
+use foodie_fi;
+SELECT
+  s.customer_id,
+  f.plan_id, 
+  f.plan_name,  
+  s.start_date
+FROM foodie_fi.plans AS f
+JOIN foodie_fi.subscriptions AS s
+  ON f.plan_id = s.plan_id;
+
+customer_id |plan_id | plan_name    | start_date |
+------------+--------+--------------+------------+
+     1      |	0   |	trial         |	2020-08-01 |
+     1      |   	1   |	basic monthly |	2020-08-08 |
+     2      |	0   |	trial         |	2020-09-20 |
+     2      |	3   |	pro annual    |	2020-09-27 |
+     11     |	0   |	trial         |	2020-11-19 |
+     11     |	4   |	churn         |	2020-11-26 |
+     13     |	0   |	trial         |	2020-12-15 |
+     13     |	1   |	basic monthly |	2020-12-22 |
+     13     |	2   |	pro monthly   |	2021-03-29 | 
+     15     |	0   |	trial         | 	2020-03-17 |
+     15     |	2   |	pro monthly   |	2020-03-24 |
+     15     |	4   |	churn         | 	2020-04-29 |
+     16     |	0   |	trial         | 	2020-05-31 |
+     16     |	1   |	basic monthly |	2020-06-07 |
+     16     |	3   |	pro annual    |	2020-10-21 |
+     18     |	0   |	trial         |	2020-07-06 |
+     18     |	2   |	pro monthly   |	2020-07-13 |
+     19     |	0   |	trial         |	2020-06-22 | 
+     19     |	2   |	pro monthly   |	2020-06-29 | 
+     19     |	3   |	pro annual    |	2020-08-29 |
+  
+SELECT
+  s.customer_id,
+  f.plan_id, 
+  f.plan_name,  
+  s.start_date
+FROM foodie_fi.plans f
+JOIN foodie_fi.subscriptions s
+  ON f.plan_id = s.plan_id
+WHERE s.customer_id = 1;
+
+SELECT
+  s.customer_id,
+  f.plan_id, 
+  f.plan_name,  
+  s.start_date
+FROM foodie_fi.plans f
+JOIN foodie_fi.subscriptions s
+  ON f.plan_id = s.plan_id
+WHERE s.customer_id = 13;
+
+SELECT
+  s.customer_id,
+  f.plan_id, 
+  f.plan_name,  
+  s.start_date
+FROM foodie_fi.plans f
+JOIN foodie_fi.subscriptions s
+  ON f.plan_id = s.plan_id
+WHERE s.customer_id = 15;
+
+===========================================================================================================================================================================
+
+                                                                   B.	Data Analysis Questions
+===========================================================================================================================================================================
+
+1.	How many customers has Foodie-Fi ever had?
+ 
+ANS:
+
+SELECT
+	COUNT(DISTINCT customer_id) AS num_customers
+FROM subscriptions;
+
+customers |
+----------+
+    8     |
+
+They are 8,customers has Foodie-Fi ever had
+
+*****************************************************************************************************************************************************************
+
+2.	What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value 
+
+ANS:
+
+SELECT
+  MONTH(start_date) AS month_date, -- Cast month as integer
+  monthname(start_date) AS month_name, -- Cast month as string
+  COUNT(*) AS trial_subscriptions
+FROM subscriptions s
+JOIN plans p
+  ON s.plan_id = p.plan_id
+WHERE s.plan_id = 0
+GROUP BY MONTH(start_date), 
+   monthname(start_date)
+ORDER BY month_date ASC;
+
+ month_date  |	month_name	  | trial_subscriptions |
+-------------+---------------+---------------------+
+    3	        |  March	       |         1           |
+    5	        |  May	       |         1           |
+    6	        |  June	       |         1           |
+    7	        |  July	       |         1           |
+    8	        | August	       |         1           |
+    9	        | September     |        1            |
+   11	        | November      |        1            |
+   12	        | December	  |         1           |
+
+March TO December has the same number of trial plans, whereas january to February, april has the lowest number of trial plans.
+
+*****************************************************************************************************************************************************************
+
+
+3.	What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name.
+
+ANS:
+
+SELECT 
+  p.plan_id,
+  p.plan_name,
+  COUNT(*) AS events
+FROM foodie_fi.subscriptions s
+JOIN foodie_fi.plans p
+  ON s.plan_id = p.plan_id
+WHERE s.start_date >= '2021-01-01'
+GROUP BY p.plan_id, p.plan_name
+ORDER BY p.plan_id;
+
+[n_plans,plan_name] [8,"trial"] [3,"basic monthly"] [3,"pro annual"] [2,"churn"] [4,"pro monthly"]
+
+The number of customers who Trial the plan is the biggest one after the year 2020.
+
+*****************************************************************************************************************************************************************
+
+
+4.	What is the customer count and percentage of customers who have churned rounded to 1 decimal place? 
+
+ANS:
+
+SELECT
+    COUNT(*) AS cust_churn,
+    ROUND(COUNT(*) * 100 / (SELECT COUNT(DISTINCT customer_id) FROM subscriptions),1) AS perc_churn
+FROM subscriptions
+WHERE plan_id = 4;
+
+num_customers|cust_churn|perc_churn| 
+-------------+----------+----------+      
+      2      |   2      |   25.0   |
+
+It is 25.0% of customers who have churned the plans.
+
+*****************************************************************************************************************************************************************
+
+
+5.	How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number? 
+
+ANS:
+
+WITH cte_churn AS (
+	SELECT
+		*,
+		LAG(plan_id, 1) OVER(PARTITION BY customer_id ORDER BY plan_id) AS prev_plan
+	FROM subscriptions)
+SELECT
+	COUNT(prev_plan) AS cnt_churn,
+    	ROUND(COUNT(*) * 100/(SELECT COUNT(DISTINCT customer_id) FROM subscriptions),0) AS perc_churn
+FROM cte_churn
+WHERE plan_id = 4 and prev_plan = 0;
+
+cnt_churn|perc_churn |
+---------+-----------+ 
+    1    |    13     |
+
+There are 1 customer who have churned straight after their initial free trial, which 13% of the customer base.
+
+*****************************************************************************************************************************************************************
+
+
+
+6.	What is the number and percentage of customer plans after their initial free trial? 
+
+ANS:
+
+WITH cte_next_plan AS (
+	SELECT
+		*,
+		LEAD(plan_id, 1) OVER(PARTITION BY customer_id ORDER BY plan_id) AS next_plan
+	FROM subscriptions)
+SELECT
+	next_plan,
+	COUNT(*) AS num_cust,
+    	ROUND(COUNT(*) * 100/(SELECT COUNT(DISTINCT customer_id) FROM subscriptions),1) AS perc_next_plan
+FROM cte_next_plan
+WHERE next_plan is not null and plan_id = 0
+GROUP BY next_plan
+ORDER BY next_plan;
+
+next_plan|num_cust|perc_next_plan|
+---------+--------+--------------+
+    1	    |    3	  |    37.5      |
+    2    |     3  |     37.5     |
+    3	    |    1	  |     12.5     |
+    4	    |    1	  |     12.5     |
+
+37.5% of customers choose basic monthly or next_plan = 1 after their initial trial.
+37.5% of customers choose pro monthly or next_plan = 2 after their initial trial.
+12.5% of customers choose pro annual or next_plan = 3 after their initial trial.
+12.5% of customers choose churn or next_plan = 4 after their initial trial.
+
+*****************************************************************************************************************************************************************
+
+
+7.	What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31? 
+
+ANS:
+
+WITH cte_next_date AS (
+	SELECT
+		*,
+		LEAD(start_date, 1) OVER(PARTITION BY customer_id ORDER BY start_date) AS next_date
+	FROM subscriptions
+    WHERE start_date <= '2020-12-31'),
+plans_breakdown AS(
+SELECT
+	plan_id,
+    COUNT(DISTINCT customer_id) AS num_customer
+FROM cte_next_date
+WHERE (next_date IS NOT NULL AND (start_date < '2020-12-31' AND next_date > '2020-12-31'))
+      OR (next_date IS NULL AND start_date < '2020-12-31')
+GROUP BY plan_id)
+SELECT
+	plan_id,
+	num_customer,
+    ROUND(num_customer * 100/(SELECT COUNT(DISTINCT customer_id) FROM subscriptions),1) AS perc_customer
+FROM plans_breakdown
+GROUP BY plan_id, num_customer
+ORDER BY plan_id;
+
+plan_id|num_customer|perc_customer|
+-------+------------+-------------+
+1      |    	2   |      25.0   |
+2      |    	1   |   	12.5   |
+3      |    	3   | 	37.5   |
+4      |     	2   |      25.0   |
+*****************************************************************************************************************************************************************
+
+
+
+8.	How many customers have upgraded to an annual plan in 2020? 
+
+ANS:
+
+SELECT
+	COUNT(customer_id) AS num_customer
+FROM subscriptions
+WHERE plan_id = 3 AND start_date <= '2020-12-31';
+
+num_customer|
+------------+
+     3      |
+
+   3 customers have upgraded to an annual plan in 2020
+
+*****************************************************************************************************************************************************************
+
+
+9.	How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi? 
+
+ANS:
+
+WITH annual_plan AS (
+	SELECT
+		customer_id,
+        start_date AS annual_date
+	FROM subscriptions
+    	WHERE plan_id = 3),
+trial_plan AS (
+	SELECT
+		customer_id,
+        start_date AS trial_date
+	FROM subscriptions
+    WHERE plan_id = 0
+)
+SELECT
+	ROUND(AVG(DATEDIFF(annual_date, trial_date)),0) AS avg_upgrade
+FROM annual_plan ap
+JOIN trial_plan tp ON ap.customer_id = tp.customer_id;
+
+avg_upgrade |
+------------+
+     73     |
+
+    73 many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi
+
+*****************************************************************************************************************************************************************
+
+
+10.	Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc) 
+
+ANS:
+
+WITH annual_plan AS (
+	SELECT
+		customer_id,
+        start_date AS annual_date
+	FROM subscriptions
+    WHERE plan_id = 3),
+trial_plan AS (
+	SELECT
+		customer_id,
+        start_date AS trial_date
+	FROM subscriptions
+    WHERE plan_id = 0
+),
+day_period AS (
+SELECT
+	DATEDIFF(annual_date, trial_date) AS diff
+FROM trial_plan tp
+LEFT JOIN annual_plan ap ON tp.customer_id = ap.customer_id
+WHERE annual_date is not null
+),
+bins AS (
+SELECT
+	*, FLOOR(diff/30) AS bins
+FROM day_period)
+SELECT
+	CONCAT((bins * 30) + 1, ' - ', (bins + 1) * 30, ' days ') AS days,
+	COUNT(diff) AS total
+FROM bins
+GROUP BY bins;
+
+   days        |   total |
+---------------+---------+
+1 - 30 days    | 	1  |
+121 - 150 days | 	1  |
+61 - 90 days   | 	1  |
+
+*****************************************************************************************************************************************************************
+
+
+11.	How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
+
+ANS:
+
+WITH next_plan AS (
+	SELECT 
+		*,
+		LEAD(plan_id, 1) OVER(PARTITION BY customer_id ORDER BY start_date, plan_id) AS plan
+	FROM subscriptions)
+SELECT
+	COUNT(DISTINCT customer_id) AS num_downgrade
+FROM next_plan np
+LEFT JOIN plans p ON p.plan_id = np.plan_id
+WHERE p.plan_name = 'pro monthly' AND np.plan = 1 AND start_date <= '2020-12-31';
+
+num_downgrade |
+--------------+
+      0       |
+
+There is none of the customers downgraded from a pro monthly to a basic monthly plan in 2020.
+===========================================================================================================================================================================
+
+                                                                  C.	Challenge Payment Question
+===========================================================================================================================================================================
+
+The Foodie-Fi team wants you to create a new payments table for the year 2020 that includes amounts paid by each customer in the subscriptions table with the following requirements: 
+1.	monthly payments always occur on the same day of month as the original start_date of any monthly paid plan 
+2.	upgrades from basic to monthly or pro plans are reduced by the current paid amount in that month and start immediately 
+3.	upgrades from pro monthly to pro annual are paid at the end of the current billing period and also starts at the end of the month period 
+4.	once a customer churns they will no longer make payments
+___________________________________________________________________________________________________________________________________________________________________________
+
+
+ANS:
+
+use foodie_fi;
+alter table plans;
+alter table subscriptions;
+
+use foodie_fi;
+create view customer_id1 as (
+(select customer_id, plan_id, plan_name, start_date as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id =1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 1 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 2 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 3 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 4 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 1));
+
+create view customer_id2 as (
+(select customer_id, plan_id, plan_name, start_date as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 2));
+
+create view customer_id13 as (
+(select customer_id, plan_id, plan_name, start_date as "payment_date", price as "amount" from plans join subscriptions using (plan_id) where plan_id not in (0,4) and customer_id = 13 limit 1));
+
+create view customer_id15 as (
+(select customer_id, plan_id, plan_name, start_date as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 15) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 1 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 15));
+
+
+create view customer_id16 as (
+(select customer_id, plan_id, plan_name, start_date as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 16 limit 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 1 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 16 limit 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 2 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 16 limit 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 3 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 16 limit 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 4 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 16 limit 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 5 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id = 3 and customer_id = 16));
+
+
+create view customer_id18 as (
+(select customer_id, plan_id, plan_name, start_date as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id = 2 and customer_id = 18) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 1 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id = 2 and customer_id = 18) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 2 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id = 2 and customer_id = 18) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 3 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id = 2 and customer_id = 18) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 4 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id = 2 and customer_id = 18) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 5 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id = 2 and customer_id = 18));
+
+
+create view customer_id19 as (
+(select customer_id, plan_id, plan_name, start_date as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 19 limit 1) union all
+(select customer_id, plan_id, plan_name, date_add(start_date, interval 1 month) as "payment_date", price as "amount" from plans join subscriptions using(plan_id) where plan_id not in (0,4) and customer_id = 19)) ;
+
+
+create table payments as (
+select *, rank() over(order by payment_date) as "payment_order" from customer_id1 union all
+select *, rank() over(order by payment_date) as "payment_order" from customer_id2 union all
+select *, rank() over(order by payment_date) as "payment_order" from customer_id13 union all
+select *, rank() over(order by payment_date) as "payment_order" from customer_id15 union all
+select *, rank() over(order by payment_date) as "payment_order" from customer_id16 union all
+select *, rank() over(order by payment_date) as "payment_order" from customer_id18 union all
+select *, rank() over(order by payment_date) as "payment_order" from customer_id19);
+
+select * from payments;
+
+-----------+-------+-------------+------------+------+-----------+
+customer_id|plan_id|plan_name    |payment_date|amount|payment_ord|
+-----------+-------+-------------+------------+------+-----------+
+          1|      1|basic monthly|  2020-08-08|  9.90|          1|
+          1|      1|basic monthly|  2020-09-08|  9.90|          2|
+          1|      1|basic monthly|  2020-10-08|  9.90|          3|
+          1|      1|basic monthly|  2020-11-08|  9.90|          4|
+          1|      1|basic monthly|  2020-12-08|  9.90|          5|
+          2|      3|pro annual   |  2020-09-27|199.00|          1|
+         13|      1|basic monthly|  2020-12-22|  9.90|          1|
+         15|      2|pro monthly  |  2020-03-24| 19.90|          1|
+         15|      2|pro monthly  |  2020-04-24| 19.90|          2|
+         16|      1|basic monthly|  2020-06-07|  9.90|          1|
+         16|      1|basic monthly|  2020-07-07|  9.90|          2|
+         16|      1|basic monthly|  2020-08-07|  9.90|          3|
+         16|      1|basic monthly|  2020-09-07|  9.90|          4|
+         16|      1|basic monthly|  2020-10-07|  9.90|          5|
+         16|      3|pro annual   |  2020-10-21|199.90|          6|
+         18|      2|pro monthly  |  2020-07-13| 19.90|          1|
+         18|      2|pro monthly  |  2020-08-13| 19.90|          2|
+         18|      2|pro monthly  |  2020-09-13| 19.90|          3|
+         18|      2|pro monthly  |  2020-10-13| 19.90|          4|
+         18|      2|pro monthly  |  2020-11-13| 19.90|          5|
+         18|      2|pro monthly  |  2020-12-13| 19.90|          6|
+         19|      2|pro monthly  |  2020-06-29| 19.90|          1|
+         19|      2|pro monthly  |  2020-07-29| 19.90|          2|
+         19|      3|pro annual   |  2020-08-29|199.00|          3|
+-----------+-------+-------------+------------+------+-----------+
+
+===========================================================================================================================================================================
+
+                                                             
+                                                                 D.	Outside The Box Questions
+
+===========================================================================================================================================================================
+
+The following are open ended questions which might be asked during a technical interview for this case study - there are no right or wrong answers, but answers that make sense from both a technical and a business perspective make an amazing impression! 
+1.	How would you calculate the rate of growth for Foodie-Fi? 
+2.	What key metrics would you recommend Foodie-Fi management to track over time to assess performance of their overall business? 
+3.	What are some key customer journeys or experiences that you would analyse further to improve customer retention? 
+4.	If the Foodie-Fi team were to create an exit survey shown to customers who wish to cancel their subscription, what questions would you include in the survey? 
+5.	What business levers could the Foodie-Fi team use to reduce the customer churn rate? How would you validate the effectiveness of your ideas?
+
+
+*****************************************************************************************************************************************************************
+
+
+1.	How would you calculate the rate of growth for Foodie-Fi?
+
+
+ANS:
+
+•	The current value subtracts the previous value, then divides to the previous value, multiplying by 100 to get the percentage result. If the value is greater than 0 then the growth is positive, if the value is below or equal to 0 then there is no growth.
+•	We can calculate revenue growth or customer growth, year over year growth, month over month growth.
+•	Values need to be cleared before calculation, for example, if we calculate revenue we need to subtract refunds or chargebacks first as they are not in our revenue anymore. What about customers, it can be calculated as the growth of active customers (all customers subtracting churned customers and trial customers).
+•	Let's calculate month over month grow using lag() window function:
+
+SET
+  search_path = foodie_fi;
+SELECT
+  DATE_TRUNC('month', start_date) AS month,
+  COUNT(customer_id) AS current_number_of_customers,
+  LAG(COUNT(customer_id), 1) over (
+    ORDER BY
+      DATE_TRUNC('month', start_date)
+  ) AS past_number_of_customers,
+  (
+    100 * (
+      COUNT(customer_id) - LAG(COUNT(customer_id), 1) over (
+        ORDER BY
+          DATE_TRUNC('month', start_date)
+      )
+    ) / LAG(COUNT(customer_id), 1) over (
+      ORDER BY
+        DATE_TRUNC('month', start_date)
+    )
+  ) || '%' AS growth
+FROM
+  subscriptions AS s
+  JOIN plans AS p ON s.plan_id = p.plan_id
+WHERE
+  plan_name != 'trial'
+  AND plan_name != 'churn'
+GROUP BY
+  month
+ORDER BY
+  month
+
+
+----------------+--------------------------------+---------------------------+----------+
+      month     | current_number_of_customers	| past_number_of_customers  | growth   |
+----------------+--------------------------------+---------------------------+----------|
+  2020-03-01    |              1                 |              -            |          |
+  2020-04-01    |              1                 |              1            |    0     |
+  2020-05-01    |              1                 |              1            |    0     |
+  2020-06-01    |              2                 |              1            |   100%   |
+  2020-07-01    |              1                 |              2            | -99.5%   |
+  2020-08-01    |              2                 |              1            |   100%   |
+  2020-09-01    |              1                 |              2            | -99.5%   |
+  2020-10-01    |              1                 |              1            |    0     |
+  2020-11-01    |              1                 |              1            |    0     |
+  2020-12-01    |              1                 |              1            |    0     |
+  2021-03-01    |              1                 |              1            |    0     |
+----------------+--------------------------------+---------------------------+----------+
+
+         (current_number_of_customers - past_number_of_customers)
+growth = -------------------------------------------------------- * 100 = Growth %
+                     past_number_of_customers
+
+We can see that the number of users during the last four months is decreasing completely.
+  
+*****************************************************************************************************************************************************************
+
+
+2.	What key metrics would you recommend Foodie-Fi management to track over time to assess performance of their overall business?
+
+ANS:
+
+•	Total number of the customers on a certain date,
+•	number of active customers (total - churn),
+•	number of paying customers (total - churn - trial),
+•	number of new customers on a certain date,
+•	ratio new to churn customers - to understand if the company grows or losing their customers,
+•	ratio new customers to paying customers,
+•	revenue: total revenue, recurring revenue, average revenue per user (ARPU), average revenue per paying user (ARPPU)
+•	number of active customers by plans - to understand what plan do customers prefer, and to see growth points,
+•	number of active customers on date after their sign-up (cohort analysis: day 7, day 30, etc).
+
+
+*****************************************************************************************************************************************************************
+
+
+3.	 What are some key customer journeys or experiences that you would analyse further to improve customer retention?
+
+ANS:
+
+1)    I think it is important to see what happens on the day 7 when the trial ends - if a user becomes a customer or not. 
+2)    Next, what happens after their purchase - do they stick with it or prefer to upgrade / downgrade it? 
+3)    If a customer decides to cancel their subscription - we can analyze when it happened and how long they used the APP before cancel.
+4)    Also it always helpful to know how often customers use the app, how long they use it, how many videos they watch during a session, check which rating the customers leave for the APP, number of uninstalls / reinstalls
+
+*****************************************************************************************************************************************************************
+
+
+4.	 If the Foodie-Fi team were to create an exit survey shown to customers who wish to cancel their subscription, what questions would you include in the survey?
+
+ANS:
+
+1.	What’s the single biggest reason for you cancelling?
+     •	I don’t understand how to use Foodie-Fi?
+     •	Foodie-Fi is too expensive?
+     •	I found another product that I like better?
+            Optional follow-up question: What service are you using now?
+     •	I no longer needed Foodie-Fi?
+     •	Foodie-Fi service quality is too low?
+     •	Foodie-Fi is missing some features that I need?
+            Optional follow-up question: could you please describe the feature you need?
+     •	Other (could you please explain your reason?)
+2.	Did we meet your expectations?
+     •	Yes
+     •	No
+3.	What would it take for you to reconsider subscribing to Foodie-Fi? 
+4.	How can we improve? - Optional, could you please let us know how can we make Foodie-Fi better?
+
+*****************************************************************************************************************************************************************
+
+
+5.	What business levers could the Foodie-Fi team use to reduce the customer churn rate? How would you validate the effectiveness of your ideas?
+
+
+ANS: 
+
+•	First need to understand what churn rate we are talking about.
+•	Churn rate after trial is different from the paying customer churn rate. When a user sign-ups, the Foodie-Fi goal is to convert him into customer as quick a possible. Need to show them features of the paid plans and offer a special discount for early subscription for pro plans.
+•	After the trial ends, it is possible to show limited amount of videos per day for free, and offer another discount.
+
+•	Email marketing: if customers subscribed to our email updates we can remind them about the service - not often, when there is something interesting for the user to know. We can remind users about the service via targeted advertisement campaigns too.
+
+•	Loyalty program: paying customers can be extra rewarded for their loyalty with bonus points for their future purchases for example. Adding gamification elements to the loyalty program might also work: like goal-setting, countdowns, or virtual rewards.
+
+•	Feedback feature - if something goes wrong, and a user or a customer has an option to easily share their opinion or send a bug report - that's fine. Sometimes users are ready to pay but just cannot do it because of some technical problems or something that can be resolved easily.
+
+•	If a paying user churns then we can ask them about the reasons - why they decided to cancel their subscription?
+•	And also send them some reminders from time to time.
+•	How to validate: A/B tests, cohort analysis - number of active customers by date (retention day 7, retention day 30 etc.).
+
+===========================================================================================================================================================================
+
+                                                                             Conclusion
+
+===========================================================================================================================================================================
+
+This case study should reflect realistic questions we usually focus on for all product related analytics requests in a wide variety of industries, especially in the digital space
+
+
+===========================================================================================================================================================================
