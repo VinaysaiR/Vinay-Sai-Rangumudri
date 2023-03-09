@@ -1,0 +1,48 @@
+
+
+1) EDA EXCEL or Power BI
+
+EDA ON SALES DATA Exploratory data analysis
+EXPLORATORY DATA ANALYSIS
+
+
+1. What was the best month for sales? How much was earned that month?
+ DECEMBER HEIGHT SALES -28114 (BEST MONTH FOR SALES),
+ EARNED that month - $4,613,443.34
+
+
+2. What time should we display advertisements to maximize the likelihood of customers buying products?What city sold the most product?
+
+ city sold the most product
+ San Francisco -- 50239
+
+
+
+
+3. What products are most often sold together?
+
+products are most often sold together
+
+AAA Batteries (4-pack) -- 31017
+AA Batteries (4-pack)	 --27635
+
+
+
+4. What product sold the most? Why do you think it sold the most?
+
+AAA Batteries (4-pack) -- 31017
+
+
+
+
+
+next Friday submission
+
+ans that four questions
+
+www.kaggle.com
+researchgate
+every we send msi report for attendence
+prograss column 
+
+nidhi.sharma@skill-lync.com
