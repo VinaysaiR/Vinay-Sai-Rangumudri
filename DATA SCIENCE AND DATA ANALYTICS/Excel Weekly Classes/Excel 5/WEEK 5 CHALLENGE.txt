@@ -1,0 +1,28 @@
+1. If the value of C6 = 70 ,Then what is the output of =IF(C6>=70,"Pass","Fail")
+ANS:  =IF(C6>=70,"Pass","Fail") -----> PASS
+
+2. What is the syntax of SUMIF Function?
+ANS: SUMIF(RANGE,CRITERIA,[SUM_RANGE])
+
+3. Count the number of Values for country Mexico, dataset provided below: Dataset
+ANS: =COUNTIF(B2:B50,"mexico") ----> 8
+
+4. Calculate the total unit sold for country Canada (Ref. the dataset given above).
+ANS: SUMIF(B2:B50,"Canada",E2:E50)
+
+5. What is the syntax for IFERROR Function?
+Ans : IFERROR(value,value_if_error)
+
+6. What will be the output of =LEFT("Germany")
+ANS: =LEFT("Germany")  ----> G
+
+7. What will be the output of =RIGHT("Germany")
+ANS: =RIGHT("Germany") ----> y
+
+8. Make a new column in the above given dataset as shown in the output below.
+ANS: =CONCATENATE(A2," ",B2," ",C2)
+     =CONCATENATE(A3," ",B3," ",C3)
+     - - - - - - - - - - - - - - -
+     - - - - - - - - - - - - - - - 
+     - - - - - -  - - - - - - - - -
+     =CONCATENATE(A50," ",B50," ",C50)

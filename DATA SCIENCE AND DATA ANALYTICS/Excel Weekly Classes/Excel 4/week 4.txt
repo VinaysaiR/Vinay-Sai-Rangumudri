@@ -1,0 +1,28 @@
+1.  Import Excel Template & customize it according to your data.
+ans : refer TIME CARD1.xlsx (IN EXCEL 2010 NO MORE TEMPLATES)
+
+2. Import Excel template & list  out all the formula used. Explicitly mention all the formulas used here.
+ans : refer WEEK 4 CHALLENGE.pdf
+     DATE = ("DAY-MONTH-YEAR") FORMULA DATEVALUE()
+     DATE formate formula =IF($C$16=0,"",$C$16-6)
+     TOTAL HOURS =SUM(E21:E27) ,=SUM(D21:D27), =SUM(F21:F27), =SUM(G21:G27), =SUM(H21:H27)
+     TOTAL PAY = D28*D29, =E28*E29, =F28*F29, =G28*G29, =H28*H29,
+     final TOTAL PAY = D30*G30
+
+3. What is formatting?
+ans : Formatting in Excel is a neat trick used to change the appearance of the data represented in the worksheet
+
+4. Why is formatting used?
+ans : We can do formatting in multiple ways, such as we can format the font of the cells or format the table by using
+     the "Styles" and "Format" tabs available in the "Home" tab.
+     Formatting text or numbers can make them appear more visible especially when you have a large worksheet. 
+     Changing default formats includes things like changing the font color, style, size, text alignment in a cell, or apply formatting effects.
+
+5. Import Excel Template and list out all the formatting performed. 
+ANS: given below the list of all the formatting performed
+     1) apply the brown accent 3 color to the main row header
+     2) font size 12 and font used "Verdana" in excel table
+     3) in starting details used the font "Arial Rounded MT Bold" and font size 12
+     4) blue colour is applied for mail indicated the mail
+     5) to the whole template borders are placed
+ 

@@ -1,0 +1,12 @@
+2. Answer the following for XLookup function
+A. 0 Signifies for match mode
+    ----> TRUE [exact match]
+
+   1 Signifies for search mode
+    ----> TRUE  [search from first]
+
+3. What should we write in Vlookup function for approximate match
+ANS : Approximate match  ----> TRUE
+
+4.What should we write in Hlookup function for Exact match
+ANS . Exact match ----> FALSE
