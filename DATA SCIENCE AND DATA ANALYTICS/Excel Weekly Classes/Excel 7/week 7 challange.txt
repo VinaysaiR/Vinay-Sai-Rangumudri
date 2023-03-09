@@ -1,0 +1,37 @@
+1. What is the Syntax of UNIQUE Function?
+ans : UNIQUE(array,[by_col],[exactly_once])
+
+2. What is the difference between Syntax and Formula?
+ans :SYNTAX: Every function has its own pre-designed parameters basis through which a function executes results.
+    A formula can never have pre-defined parameters.
+
+3. If C5 = 2 , What is the output of =SWITCH(C5,1,"Poor",2,"OK",3,"Good","?")
+ANS : OK
+
+4.Convert SMSA.TXT File into Excel data.
+ANS : CONVERTED
+
+5. Which Language is use for power query?
+ANS :Power Query M Formula Language
+     M code is the language behind the scenes of power query. 
+     When you create a data transformation in the power query editor Excel is writing the corresponding M code for the query.																	
+
+
+6. Write the steps to transform the data?
+ANS : DATA > FROM FILE > FROM FILE TEXT /CSV > CHOOSE THE FILE > PREVEIW THE FILE > LOAD THE FILE
+---> REFFER THE ATTACHMENT STEPS.XLSX FILE
+
+7. Perform following mentioned operation on SMSA Data using power query.
+
+ANS : REFER THE LQ.XLSX ATTACHMENT
+      A. Add new Column
+      ---> new column added
+
+      B. Count Rows
+      ---> COUNT rows = 61 =ROWS(Table2[[#Headers],[#Data]])
+
+      C. To check the data type 
+      ---> First two rows Strings Data type
+
+      D. Use first row as headers
+      ---> Its done first row as headers 

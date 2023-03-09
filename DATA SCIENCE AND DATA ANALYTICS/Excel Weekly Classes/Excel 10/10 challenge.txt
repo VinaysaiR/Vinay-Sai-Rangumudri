@@ -1,0 +1,41 @@
+a.Calculate total revenue for the region East							
+Region
+East
+=DSUM(A1:G38,7,K6:K7)
+=SUMIF(B:B,B4,G:G)
+
+b.Calculate maximum revenue for the region East for the item PEN							
+Region	Item
+East	Pen
+
+=DMAX(A1:G38,7,K12:L13)
+
+c.Calculate minimum of sales for all the Rep other than Gill							
+Rep
+Smith
+Morgan
+Jones
+Jardine
+Parent
+Kivell
+Andrews
+Parent
+=DMIN(A1:G38,7,K18:K26)
+
+d.Calculate Sum of sales for units greater than 25							
+Units
+>25
+=DSUM(A1:G38,7,K31:K32)
+
+e.Calculate Sum of sales from 18th Oct 2014 to 17th Oct 2015.							
+OrderDate
+41930
+42294
+=DSUM(A1:G38,7,K37:K38)
+
+f.Calculate Sum of sales for Rep Smith, for item Binder, for Region Central							
+Rep	Item	Region
+Smith	Binder	Central    
+=DSUM(A1:G38,7,K42:M43)
+
+

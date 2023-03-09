@@ -1,0 +1,64 @@
+1. Import Power Pivot Add into Excel
+
+ANS:
+1.	Power pivot >>Click on Manage>> 
+2.	We get Power pivot for Excel
+3.	Click on From other sources >> (Table Import Wizard Connect to a Data Source) >> (Text Files → Excel File).
+4.	Click on Excel File → Next → Connect to a Microsoft Excel File (Browse → Excel FilePath) → select the data → Click on Open.
+5.	Select Tables and views → Finish
+6.	Next click on → Use the first row as column header → Next.
+7.	Importing Success → Close.
+8.	Tables will be Opened (In this way Import PowerPivot Add into Excel )
+            ●	Cookie Types
+            ●	Customers
+            ●	Orders
+ 
+ 
+ 
+
+2. Combine data from given datasets 
+1.	Cookie Type
+2.	Customers
+3.	Orders
+Using Relationship Model given below
+
+Ans: 
+1.	In Power pivot for Excel → click on Diagram View.
+2.	There are three boxes visible, Those are Cookie Type, Customers, Orders.
+3.	Place the three tables in order of 
+
+               Customers→ Orders → Cookie Types 
+
+4.	Select Customer ID in customers table and drag the Arrow into the Customer ID in Orders table.
+5.	By the way, links form in between the Customers and Orders tables.
+6.	Select Cookie Type in the Cookies types table and drag the Arrow into the product in the order table.
+7.	By the way Link form between the orders and cookies Types tables
+
+Finally we get the given table in the Question 2
+
+
+3. Calculate Revenue in Orders Data as
+Cookie Types'[Revenue Per Cookie]) * Orders[Units Sold]
+
+Ans:
+1.	Click on Add a column → Name it for "Revenue".
+2.	Select a box in a revenue column.
+3.	Apply a formula fx = RELATED('Cookie Types'[Revenue Per Cookie]) *  Orders[Units Sold]
+4.	We get the All Revenue values of the products in the Revenue column.
+
+4. Calculate Cost in Orders as
+Cookie Types'[Cost Per Cookie]) * Orders[Units Sold]
+
+Ans:
+1.	Click on Add a column → Name it for "Cost".
+2.	Select a box in a Cost column.
+3.	Apply a formula fx = RELATED('Cookie Types'[Cost Per Cookie]) * Orders[Units Sold]
+4.	We get the All Cost values of the products in the Cost column.
+
+5. Calculate Profit in Orders as
+Orders[Revenue]-Orders[Cost]
+Ans: 
+1.	Click on Add a column → Name it for "Profit".
+2.	Select a box in a Profit column.
+3.	Apply a formula fx = Orders[Revenue] - Orders[Cost]
+4.	We get the All Profit values of the products in the Profit column.
