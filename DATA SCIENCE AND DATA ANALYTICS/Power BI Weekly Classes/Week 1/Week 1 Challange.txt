@@ -1,0 +1,53 @@
+1) Install Power BI Desktop using Microsoft Stores and explain the steps
+ANS: Power BI Installation:
+          You have two options to download the software.
+             1) Open a browser ex. 
+                ---> google chrome. 
+                ---> go to this website https://powerbi.microsoft.com/en-us/ 
+                ---> then click on try free then
+                ---> you can download & install the software.
+             2) Second method:
+                ---> Go to the Microsoft store
+                ---> Type Power bi Desktop in The Search Bar.
+                ---> You will get this page click on install 
+                ---> then download the software & install.
+Once you installed it in your system just type power bi desktop in the start menu then open the software
+
+------------------------------------------------------------------------------------------------------------------------------
+
+2) Explain the Power BI Desktop Components
+ANS:
+
+Power BI Desktop: Power BI Desktop is a new component in the Power BI suit. It is an integrated development tool for Power Query, Power Pivot, and Power View. It lets you build advanced queries, models, and reports. With Power BI Desktop, it is easy to advance your skills in BI and your experience in data analytics.
+
+Power Query : a data mashup and transformation tool
+Power Pivot : a memory tabular data modeling tool
+Power View  : a data visualization tool
+Power Map   : a 3D geospatial data visualization tool
+Power Q&A   : A natural language question and answering engine
+
+Power Query: Power Query is one of the important components of Power BI. This can be included in your Excel or can be used as a component of the Power BI Desktop. Using Power Query, you can delete data from numerous data sources and extract data from a wide range of different databases like Oracle, SQL Server, MySQL, and other different databases. You can also fetch data from records like text files, CSV files, or Excel files. Learn a step-by-step guide on exporting Power Bi data to excel from our blog
+
+Power Pivot: Power Pivot is a data modeling and calculation engine. It is used for modeling simple and complex data. In Power Pivot, you can set or create relationships between different tables and calculate values that can be viewed in Pivot tables. It provides you with a huge space to create your design.
+The language used by Power BI Pivot is Data Analysis Expression (DAX), which is a strongly functional language, and all your calculations are done here.
+
+Power View: Power View is the fundamental data visualization component of Power BI. It is an interactive component that connects to data sources and retrieves metadata that can be utilized for data analysis. There are many blueprints for visualization in the Power View lists. With Power View, you can filter data for each visualization component or even for the entire report. Slicers can be used for better slicing and dicing of data.
+Reports in Power View are interactive; the user can highlight some part of the data or different components in Power View to interact with each other.
+
+Power Map: Power Map is used to visualize geospatial data in 3D mode. As soon as the visualization renders in 3D mode, it provides another dimension to it. In Power Map, you can assume one attribute as the length of a column in 3D and another attribute as a heatmap view. Based on a geographical location, the data can be highlighted. Geographical locations can be a country, state, city, or street address.
+To get the best visualization, Power Map works with the Bing Maps based on the geographical latitude or longitude or a country, state, city, or street address data.
+
+Power Q&A: Power BI Q&A is an ordinary language motor for your data model’s questions and answers. After assembling your data model and updating it on Power BI Website, you or your users can ask questions, if any, and get solutions to those questions. There are some shortcuts and hints for the construction of your model so that it can answer questions in the best possible way. For data visualizations, Power Q&A works with Power View so that users can ask questions, like the number of customers by state, and the question is answered in the form of a map view with numbers represented as bubbles by Power Q&A.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Using Get Data 🡪 Load Excel Files, CSV file, Text Files, PDF and explain any challenges
+ANS:
+
+    ----> Open Power BI
+    ----> Click on tab Get Data
+    ----> Upload Any type file, There Given Excel Files, CSV file, Text Files, PDF
+    ----> When Upload the Excel File "Sample - Superstore"
+    ----> I done Some Operation By the using of the Excel File "Sample - Superstore"
+    ----> Refer file "Week 1 Challenge"
+                

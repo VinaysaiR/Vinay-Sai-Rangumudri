@@ -1,0 +1,39 @@
+1. Explain Power BI Query Editor Components along with Home Tab
+
+a. Home tab: It includes common query task and tasks and transformation tools such as add row, add columns,
+     remove rows, remove column, split columne, group by, enter data, usea as first row header
+b. Transform query: it includes common transformation in the existing column such as pivot columnunpivot
+     column split column data, time
+c. Add column: It creates new columns with the types of conditional column, index column, duplicate column
+
+2. FORMULA BAR("M" CODE)
+3. QUERY PANE
+4. TABLE NAME & PROPERTIES
+5. APPLIED STEPS
+
+
+2. Explain Text, Number and Data Transformations
+
+A) Numbers Transformation Tools:
+
+    Statistics : Allows to evaluate Basic stats for selected column
+   (Standard :
+   Scientific :
+   Trigonometry : Allows to apply Standard Operations (Addition, Subtraction, etc.) and advanced calculations to each value in the columns)
+   Information: Allows to define Binary flags to each value in the column
+
+B) Text Transformation Tools:
+
+   Split Column: To Split a column of text into multiple columns
+   Format Text:
+   Extract : based on fixed lengths, first/last, ranges or delimiters
+
+ C) Data Transformations:
+
+    From Date & Time
+    Age: Difference between current time and date in the row
+    Date Only: Removes Time Components of Date/Time field
+    Time Only: Removed Date Components of Date/Time field
+    Year/Month/Quarter/Week/Day: Extracts individual Components from Date field
+    Hour/Minute/Second: Extracts individual Components from Time field
+    Earliest/Latest: Extracts the earliest or latest date/time from a column as single value
